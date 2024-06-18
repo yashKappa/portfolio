@@ -93,3 +93,27 @@ document.addEventListener('DOMContentLoaded', function() {
         displayRepos();
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const body = document.querySelector('body'); // Get the body element
+
+    menuToggle.addEventListener('click', function(event) {
+        console.log('Menu toggle clicked');
+        navMenu.classList.toggle('show-menu');
+        event.stopPropagation(); // Prevent the click event from bubbling up to the body
+    });
+
+    body.addEventListener('click', function(event) {
+        console.log('Clicked on body');
+        if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            // Clicked outside the navbar and the menu toggle button
+            navMenu.classList.remove('show-menu');
+        }
+    });
+});
+
+    

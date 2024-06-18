@@ -9,6 +9,7 @@ body {
     background-position: center;
 }
 
+/* Base styles */
 nav {
     padding: 10px 20px;
     box-shadow: 0 4px 8px rgb(0, 0, 0); 
@@ -60,6 +61,99 @@ nav ul li:hover::after {
 nav ul li:hover {
     background-color: rgba(0, 0, 0, 0.068);
 }
+
+/* Menu toggle button for mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 3rem;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        background-color: rgb(52, 40, 219);
+        position: absolute;
+        top: 50px;
+        right: 0;
+        margin-right: 2.5rem;
+        text-align: center;
+    }
+
+    nav li {
+        display: block;
+        margin-right: 0;
+        width: 85%;
+    }
+
+
+    nav ul li a {
+        display: block;
+        width: 100%;
+    }
+
+    /* Show the menu when the toggle button is clicked */
+    nav ul.show-menu {
+        display: flex;
+    }
+
+    nav .logo{
+        width: 5rem;
+    }
+
+    .git {
+        background-image: linear-gradient(135deg, #62bbf760 0%, #ff838360 51%, #fd72be69 100%);
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 0px;
+        margin-right: 3rem;
+        color: white;
+        width: 85%;
+        position: absolute;
+        justify-content:center;
+    }
+    
+    nav .git img {
+        margin-left: 8px; 
+        height: auto; 
+    }
+
+
+}
+
+/* Add a smooth transition for the menu appearance */
+nav ul.show-menu {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .content {
     display: flex;
@@ -223,6 +317,13 @@ nav ul li:hover {
     margin-top: -1.2rem;
 }
 
+#about {
+    background-image: url('https://i.pinimg.com/736x/e0/a4/3b/e0a43b40be90572729b731d940113bc9.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: -1.2rem;
+}
+
 .repo img{
     width: 100%;
     border-radius: 0.3rem;
@@ -335,4 +436,90 @@ h2 {
     padding: 10px; 
     width: 50%;
     border-radius: 0.5rem; 
+}
+
+/************** About Section ***************/
+
+
+/* About section styles */
+#about-repo {
+    background: linear-gradient(135deg, #17099460 0%, #292ccc60 51%);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+#about-repo h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
+.self {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.edu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 90%;
+    border-bottom: 1px solid white;
+}
+
+.head{
+    width: 90%;
+}
+
+.head h3{
+    width: fit-content;
+    font-size: 20px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2b5876;
+}
+
+
+h3{
+    width: fit-content;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.edu p {
+    font-size: 16px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: end;
+    flex-grow: 1;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 768px) {
+    .edu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .edu h3, .edu p {
+        width: 100%;
+        margin-left: 0;
+        box-sizing: border-box;
+    }
+
+    .edu h3 {
+        margin-bottom: 5px;
+    }
 }
