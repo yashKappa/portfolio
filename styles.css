@@ -85,7 +85,7 @@ nav ul li:hover {
     }
 
     nav ul {
-        display: flex;
+        display: none;
         flex-direction: column;
         width: 30%;
         background-color: rgb(52, 40, 219);
@@ -133,6 +133,36 @@ nav ul li:hover {
     nav .git img {
         margin-left: 8px; 
         height: auto; 
+    }
+
+    #skill-repo .skill-item img{
+        width: 50%;
+    }
+
+    .skill-lang {
+        display: flex;
+        justify-content:space-evenly;
+        width: 100%;
+    }
+
+    .skill-lang .skill-item{
+        width: 100%;
+    }
+
+    
+    .skill-lang .skill-item p{
+        font-size: x-small;
+        padding: 5px;
+        border-radius: 0.2rem;
+    }
+
+    
+    .skill-lang .skill-item img{
+        width: 100%;
+    }
+
+    #skill-repo p{
+        width: fit-content;
     }
 
 
@@ -428,7 +458,7 @@ h2 {
     padding: 10px;
     border-radius: 0.5rem;
     border: 1px dashed white;
-    margin-top: 3rem;
+    margin-top: 3.8rem;
 }
 
 .skill-item p{

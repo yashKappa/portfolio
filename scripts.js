@@ -95,25 +95,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
-    const body = document.querySelector('body'); // Get the body element
+    const menuItems = navMenu.querySelectorAll('li a'); // Get all menu item links
 
     menuToggle.addEventListener('click', function(event) {
-        console.log('Menu toggle clicked');
         navMenu.classList.toggle('show-menu');
-        event.stopPropagation(); // Prevent the click event from bubbling up to the body
+        event.stopPropagation(); // Prevent the click event from bubbling up to the document
     });
 
-    body.addEventListener('click', function(event) {
-        console.log('Clicked on body');
-        if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-            // Clicked outside the navbar and the menu toggle button
+    // Add a click event listener to the document to close the menu when clicking outside of it
+    document.addEventListener('click', function(event) {
+        if (navMenu.classList.contains('show-menu') && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
             navMenu.classList.remove('show-menu');
         }
     });
-});
 
-    
+    // Ensure clicks inside the navMenu don't propagate to the document
+    navMenu.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+
+    // Add click event listeners to each menu item link to close the menu after clicking
+    menuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            navMenu.classList.remove('show-menu');
+        });
+    });
+});
