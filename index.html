@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,11 +16,11 @@
             <div class="bar"></div>
         </div>
         <ul id="nav-menu">
-            <li><a href="#home">home</a></li>
-            <li><a href="#skills">skills</a></li>
-            <li><a href="#projects">projects</a></li>
-            <li><a href="#about">About</a></li>
-            <a href="https://github.com/yashKappa"><li class="git">Github <img src="github.png"></li></a>
+            <li><a href="#home">home <i class="fas fa-home"></i></a></li>
+            <li><a href="#skills">skills <i class="fas fa-graduation-cap"></i></a></li>
+            <li><a href="#projects">projects <i class="fas fa-briefcase"></i></a></li>
+            <li><a href="#about">About <i class="fas fa-user"></i></a></li>
+            <a class="github" href="https://github.com/yashKappa"><li class="git">Github <img src="github.png"></li></a>
         </ul>
     </nav>
     
@@ -63,10 +64,29 @@
                     <span><p>MySQL</p></span>
                 </div>
                 <div class="skill-item">
+                    <img src="https://miro.medium.com/v2/resize:fit:789/1*-dLfEatc7uCgyukZK_tz0A@2x.jpeg" alt="MySQL">
+                    <span><p>MSSQL</p></span>
+                </div>
+                <div class="skill-item">
                     <img src="https://miro.medium.com/v2/resize:fit:600/1*ZjIhdWXPOt8AAQAzxrYsnw.png" alt="MySQL">
                     <span><p>ReactJS</p></span>
                 </div>
-                
+                <div class="skill-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/fr/3/32/Staruml_logo.png" alt="MySQL">
+                    <span><p>StarUML</p></span>
+                </div>
+                <div class="skill-item">
+                    <img src="https://www.svgrepo.com/show/353735/firebase.svg" alt="MySQL">
+                    <span><p>Firebase</p></span>
+                </div>
+                <div class="skill-item">
+                    <img src="https://www.svgrepo.com/show/331488/mongodb.svg" alt="MySQL">
+                    <span><p>MongoDB</p></span>
+                </div>
+                <div class="skill-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/2048px-New_Power_BI_Logo.svg.png" alt="MySQL">
+                    <span><p>PowerBI</p></span>
+                </div>
             </div>
         </div>
     </div>
@@ -99,7 +119,11 @@
                 </div> 
                 <div class="edu">
                     <h3>Mumbai University</h3>
-                    <p>Universal MSG-SGKM College / B.Sc.IT</p>
+                    <p>Universal MSG-SGKM College (2024) / B.Sc.IT</p>
+                </div>
+                <div class="edu">
+                    <h3>Mumbai University</h3>
+                    <p>Chandrabhan college / M.Sc.IT (Masters in IT)</p>
                 </div>
             </div>
 
@@ -116,12 +140,27 @@
 
         <div class="self">
             <div class="head">
-                <h3>Future Planning</h3>
+                <h3>further Studies</h3>
             </div>
             <div class="edu">
                 <h3>After completing my degree, I started my further education with an M.Sc. in IT (Masters in Information Technology) while working.</h3>
         </div>
     </div>
+
+    <div class="self">
+        <button id="download-btn">Download resume <i class="fas fa-download"></i></button>
+    </div>
+    
+    <script>
+        document.getElementById('download-btn').addEventListener('click', function() {
+            var link = document.createElement('a');
+            link.href = 'yash resume.pdf'
+            link.download = 'yash resume.pdf';
+            link.click();
+        });
+    </script>
+
+
     </div>
     
     
