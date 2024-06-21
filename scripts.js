@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>`;
             }).join(' ');
 
-            languagesUsed.innerHTML = `Languages Used: ${languagesHtml}`;
+            languagesUsed.innerHTML = `${languagesHtml}`;
         })
         .catch(error => {
             console.error('Error fetching the repository data:', error);
@@ -123,4 +123,40 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('show-menu');
         });
     });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const texts = document.querySelectorAll('.p3');
+    let index = 0;
+
+    function typeNextText() {
+        if (index >= texts.length) {
+            index = 0; // Reset index to loop continuously
+        }
+
+        const currentText = texts[index];
+        const fullText = currentText.getAttribute('data-text');
+        currentText.textContent = '';
+        currentText.style.display = 'inline-block'; // Show the current text
+        let charIndex = 0;
+
+        function typeChar() {
+            if (charIndex < fullText.length) {
+                currentText.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, 100); // Adjust typing speed here
+            } else {
+                setTimeout(() => {
+                    currentText.style.display = 'none'; // Hide the current text
+                    index++;
+                    typeNextText();
+                }, 1000); // Adjust delay before hiding text here
+            }
+        }
+
+        typeChar();
+    }
+
+    typeNextText();
 });
