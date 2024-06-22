@@ -40,7 +40,7 @@ nav ul li {
     border-radius: 5px;
     position: relative;
     margin-right: 3rem;
-    color: black;
+    color: rgb(252, 248, 248);
     font-weight: bold;
 }
 
@@ -95,7 +95,6 @@ nav ul li:hover {
         color: white;
         background-size: cover;
         background-position: center;
-        background-image: url('https://i.pinimg.com/236x/5e/ec/c8/5eecc82701784d05e2f2717d093bf414.jpg');
         background-size: cover;
     }
 
@@ -286,6 +285,9 @@ nav ul li:hover {
         border-radius: 0.3rem;
     }
     
+    .heading-image .heading{
+        width: 20rem;
+    }
 
 }
 
@@ -417,17 +419,6 @@ nav .github{
     margin-top: 20px;
 }
 
-.github-repo h2 {
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 20px;
-    margin-top: 4rem;
-    background: linear-gradient(135deg, #17099460 0%, #292ccc60 51%) ;
-    text-align: center;
-    padding: 10px;
-    border-radius: 0.5rem;
-    border: 1px dashed white;
-}
 
 #repo-details {
     display: grid;
@@ -567,7 +558,7 @@ nav .github{
 
 .skill-lang {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
     justify-items: center;
 }
@@ -577,7 +568,7 @@ nav .github{
 }
 
 .skill-item img {
-    width: 20%; /* Ensure images are not too large */
+    width: 20%; 
     border-radius: 50%;
     margin-top: 1rem;
 }
@@ -592,24 +583,34 @@ nav .github{
     justify-content: center;
 }
 
-h2 {
-    font-size: 24px;
-    color: #fff;
+.heading-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #17099460 0%, #292ccc60 51%);
-    text-align: center;
-    padding: 10px;
-    border-radius: 0.5rem;
-    border: 1px dashed white;
-    margin-top: 3.8rem;
 }
 
+.heading-image img{
+    width: 50%;
+    height: 100px;
+}
+
+.heading-image h2 {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    font-size: 2em;
+}
+
+
 .skill-item p{
-    background-color: #30329b;
+    background-color: #ffffffd3;
     padding: 10px; 
     width: 50%;
     border-radius: 0.5rem; 
+    color: black;
 }
+
 
 /************** About Section ***************/
 
@@ -679,7 +680,7 @@ h3{
 }
 
 #about-repo button{
-    background-color: rgb(90, 93, 243);
+    background-color: rgb(4, 7, 201);
     padding: 10px;
     display: flex;
     position: relative;
@@ -689,10 +690,11 @@ h3{
 }
 
 #about-repo button:hover{
-    background-color: rgb(218, 36, 36);
+    background-color: rgb(12, 16, 121);
     cursor: pointer;
 }
 
 #about-repo i{
     margin-left: 0.5rem;
 }
+
