@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const repoDetails = document.getElementById('repo-details');
     const languagesUsed = document.getElementById('languages-used');
     const showMoreBtn = document.getElementById('show-more-btn');
+    const showLessBtn = document.getElementById('show-less-btn');
     let allRepos = [];
     let displayedReposCount = 4;
 
@@ -82,17 +83,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         repoDetails.innerHTML = repoList;
 
-        // Hide the "Show More" button if all repos are displayed
-        if (displayedReposCount >= allRepos.length) {
-            showMoreBtn.style.display = 'none';
-        }
+        // Show or hide the "Show More" and "Show Less" buttons
+        showMoreBtn.style.display = (displayedReposCount < allRepos.length) ? 'block' : 'none';
+        showLessBtn.style.display = (displayedReposCount > 4) ? 'block' : 'none';
     }
 
     showMoreBtn.addEventListener('click', function() {
         displayedReposCount += 4;
         displayRepos();
     });
+
+    showLessBtn.addEventListener('click', function() {
+        displayedReposCount = 4;
+        displayRepos();
+    });
 });
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -159,4 +165,100 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     typeNextText();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    const headingImages = document.querySelectorAll('.heading-image');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+                observer.unobserve(entry.target);
+                observer.observe(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    skillItems.forEach(skill => {
+        observer.observe(skill);
+    });
+
+    headingImages.forEach(headingImage => {
+        observer.observe(headingImage);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const fadeElements = document.querySelectorAll('.fade');
+
+    function fadeInElements() {
+        fadeElements.forEach((element, index) => {
+            if (isElementInViewport(element) && !element.classList.contains('show')) {
+                setTimeout(() => {
+                    element.classList.add('show');
+                }, index * 10); // Adjust the delay between each element's fade-in effect
+            } else if (!isElementInViewport(element) && element.classList.contains('show')) {
+                element.classList.remove('show');
+            }
+        });
+    }
+
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function throttle(callback, limit) {
+        let waiting = false;
+        return function() {
+            if (!waiting) {
+                callback.apply(this, arguments);
+                waiting = true;
+                setTimeout(() => {
+                    waiting = false;
+                }, limit);
+            }
+        };
+    }
+
+    const throttledFadeIn = throttle(fadeInElements, 100);
+
+    window.addEventListener('scroll', throttledFadeIn);
+    window.addEventListener('resize', throttledFadeIn);
+
+    // Initial check when the page loads
+    fadeInElements();
+
+    document.getElementById('download-btn').addEventListener('click', function() {
+        document.getElementById('popup').classList.add('show');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.popup-content') && !event.target.matches('#download-btn')) {
+            document.getElementById('popup').classList.remove('show');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.image img');
+    let currentIndex = 0;
+
+    function showNextImage() {
+        images.forEach(img => img.style.display = 'none');
+        images[currentIndex].style.display = 'block';
+        currentIndex = (currentIndex + 1) % images.length;
+    }
+
+    setInterval(showNextImage, 2000); // Change image every 5 seconds
 });

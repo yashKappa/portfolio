@@ -244,13 +244,14 @@ nav ul li:hover {
 
    .image {
         text-align: center;
+        justify-content: center;
+        display: flex;
     }
 
    .image img {
         width: 80%;
         height: auto;
         border-radius: 50%;
-        margin-right: 2rem;
         margin-top: 3rem;
     }
 
@@ -288,6 +289,11 @@ nav ul li:hover {
     .heading-image .heading{
         width: 20rem;
     }
+
+    .res img{
+        width: 100%;
+    }
+
 
 }
 
@@ -341,7 +347,7 @@ nav ul.show-menu {
     max-width: 100%;
     height: auto;
     border-radius: 100rem;
-    border: 2px solid rgb(3, 42, 116);
+    display: none;
 }
 
 .p1{
@@ -527,21 +533,41 @@ nav .github{
 
 
 #show-more-btn {
-    margin: 20px auto; /* Center the button horizontally */
-    padding: 10px 20px;
-    background-color: #292ccc;
+    background-color: #2302dd;
     color: white;
+    padding: 10px;
     border: none;
-    border-radius: 5px;
+    width: fit-content;
+    border-radius: 0.2rem;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center the content within the button */
+    margin: 10px;
 }
 
 #show-more-btn:hover {
     background-color: #170994;
 }
+
+#show-less-btn {
+    background-color: #2302dd;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: fit-content;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#github-repo .button{
+    display: flex;
+    justify-content: center;
+}
+
+#show-less-btn:hover {
+    background-color: #170994;
+}
+
+
 
 .github-repo {
     padding: 20px;
@@ -565,6 +591,9 @@ nav .github{
 
 .skill-item {
     text-align: center;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .skill-item img {
@@ -589,9 +618,12 @@ nav .github{
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.1s ease-out, transform 1s ease-out;
 }
 
-.heading-image img{
+.heading-image img {
     width: 50%;
     height: 100px;
 }
@@ -602,15 +634,23 @@ nav .github{
     font-size: 2em;
 }
 
+.skill-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-.skill-item p{
+.heading-image.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.skill-item p {
     background-color: #ffffffd3;
     padding: 10px; 
     width: 50%;
     border-radius: 0.5rem; 
     color: black;
 }
-
 
 /************** About Section ***************/
 
@@ -631,13 +671,6 @@ nav .github{
     border-radius: 0.5rem;
 }
 
-.self {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    margin-top: 3rem;
-}
 
 .edu {
     display: flex;
@@ -687,6 +720,7 @@ h3{
     border: none;
     color: white;
     border-radius: 0.2rem;
+    border: 2px solid wheat;
 }
 
 #about-repo button:hover{
@@ -698,3 +732,36 @@ h3{
     margin-left: 0.5rem;
 }
 
+.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fade.show {
+    opacity: 1;
+}
+
+.res img{
+    width: 50%;
+    border-radius: 0.5rem;
+}
+
+#download-btn{
+    background-color: #2302dd;
+    color: #fff;
+    padding: 10px;
+    border-radius: 0.3rem;
+    border: 1px solid white;
+}
+
+#download-btn:hover{
+    background-color: #3320a1;
+}
+
+.self {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 2rem;
+}
