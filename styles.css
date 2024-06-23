@@ -10,6 +10,49 @@ body {
     background-image: url('https://i.pinimg.com/236x/5e/ec/c8/5eecc82701784d05e2f2717d093bf414.jpg');
 }
 
+/* Loader styling */
+/* Add this CSS to hide the scrollbar initially */
+body.loading {
+    overflow: hidden;
+}
+
+/* Add this CSS to reveal the scrollbar after the animation completes */
+body.loaded {
+    overflow: visible;
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure the loader is above other elements */
+}
+
+#loader img {
+    width: 200px;
+    overflow-y: hidden;
+    overflow-x: hidden; 
+}
+
+/* Hide the loader after loading */
+body.loaded #loader {
+    display: none;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+
+/* Show navigation bar after loading */
+body.loaded nav {
+    display: flex; /* or block, depending on your layout */
+}
+/* Rest of your CSS */
+
+
 /* Base styles */
 nav {
     padding: 10px 20px;
@@ -22,6 +65,7 @@ nav {
     position: fixed;
     width: 100%;
     top: 0;
+    display: none;
     z-index: 1000;
 }
 
@@ -465,6 +509,7 @@ nav .github{
 
 #home {
     background-image: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjQ5NS1taW50eS0xOC1hYnN0cmFjdGJnXzEuanBn.jpg");
+    background-image: url("https://cdn.svgator.com/images/2022/06/use-svg-as-background-image-particle-strokes.svg");
     background-size: cover;
     background-position: center;
     height: 95vh;

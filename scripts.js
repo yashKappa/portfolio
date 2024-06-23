@@ -96,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
     showLessBtn.addEventListener('click', function() {
         displayedReposCount = 4;
         displayRepos();
+        repoDetails.scrollIntoView({ behavior: 'smooth' }); // Scroll the repo-details into view
     });
 });
-
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -261,4 +261,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     setInterval(showNextImage, 2000); // Change image every 5 seconds
+});
+
+
+// JavaScript to hide loader after the GIF animation completes
+window.addEventListener('load', function() {
+    // Duration of the GIF in milliseconds (adjust as needed)
+    var gifDuration = 5000; // 5 seconds for example
+
+    setTimeout(function() {
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+    }, gifDuration);
+
+    // Initially add the loading class to prevent scrolling and hide content
+    document.body.classList.add('loading');
 });
