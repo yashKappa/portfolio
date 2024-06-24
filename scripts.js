@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             console.error('Error fetching the repository data:', error);
-            repoDetails.innerHTML = `<p>Failed to load repository details: ${error.message}</p>`;
+            repoDetails.innerHTML = `<p class="error">Failed to load repository details: ${error.message}</p>
+            <p class="error">Open The Page After Some Time</p>`;
         });
 
     function displayRepos() {

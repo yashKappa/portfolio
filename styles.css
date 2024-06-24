@@ -7,8 +7,7 @@ body {
     color: rgb(209, 205, 205);
     background-size: cover;
     background-position: center;   
-    background-image: url('https://i.pinimg.com/236x/5e/ec/c8/5eecc82701784d05e2f2717d093bf414.jpg');
-}
+    background-image: url("https://cdn.svgator.com/images/2022/06/use-svg-as-background-image-particle-strokes.svg");}
 
 /* Loader styling */
 /* Add this CSS to hide the scrollbar initially */
@@ -130,6 +129,15 @@ nav ul li:hover {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
 
+    body.loading {
+        overflow: hidden;
+    }
+    
+    /* Add this CSS to reveal the scrollbar after the animation completes */
+    body.loaded {
+        overflow: visible;
+    }
+
     body {
         width: 100%;    
         margin: 0;
@@ -158,6 +166,7 @@ nav ul li:hover {
         position: fixed;
         width: 100%;
         top: 0;
+        display: none;
         z-index: 1000;
     }
     
@@ -476,7 +485,10 @@ nav .github{
     gap: 20px;
     color: black;
     font-family: 'fantasy';
+    backdrop-filter: blur(10px);
 }
+
+
 
 .repo {
     padding: 15px;
@@ -735,7 +747,8 @@ nav .github{
     color: #fff;
     padding: 10px;
     border-radius: 5px;
-    background-color: #2b5876;
+    background-color: #4d298638;
+    border: 1px solid white;
 }
 
 
@@ -809,4 +822,14 @@ h3{
     width: 100%;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+
+.error{
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 0.3rem;  
 }
