@@ -683,12 +683,15 @@ nav .github{
 .heading-image img {
     width: 50%;
     height: 100px;
+    margin-top: 2rem;
+
 }
 
 .heading-image h2 {
     position: absolute;
     color: rgb(255, 255, 255);
     font-size: 2em;
+    margin-top: 3rem;
 }
 
 .skill-item.show {
