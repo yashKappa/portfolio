@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const authHeaders = {
     headers: {
-        'Authorization': 'token YOUR_PERSONAL_ACCESS_TOKEN'
+        'Authorization': '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'
     }
 };
 
