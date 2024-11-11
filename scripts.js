@@ -15,22 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more languages and their respective images here
     };
 
-
-
-    fetch(userReposUrl, authHeaders)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Process data as before
-    })
-    .catch(error => {
-        console.error('Error fetching the repository data:', error);
-    });
-    
     fetch(userReposUrl)
         .then(response => {
             if (!response.ok) {
@@ -61,22 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
-            fetch(userReposUrl, authHeaders)
-    .then(response => {
-        if (response.status === 403 && response.headers.get('X-RateLimit-Remaining') === '0') {
-            throw new Error('Rate limit exceeded. Please try again later.');
-        }
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .catch(error => {
-        console.error('Error fetching the repository data:', error);
-        repoDetails.innerHTML = `<p class="error">Failed to load repository details: ${error.message}</p>`;
-    });
-
-
             const uniqueLanguagesArray = [...uniqueLanguages];
             const languagesHtml = uniqueLanguagesArray.map(lang => {
                 const langImage = languageImages[lang] || 'path/to/default.png'; // Use default image if not found
@@ -92,10 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error fetching the repository data:', error);
             repoDetails.innerHTML = `<p class="error">Failed to load repository details: ${error.message}</p>
-            <p class="error">Too Many Request At a Time, Open The Page After Some Time</p>`;
+            <p class="error">Open The Page After Some Time</p>`;
         });
 
-    /*function displayRepos() {
+    function displayRepos() {
         const reposToDisplay = allRepos.slice(0, displayedReposCount);
         const repoList = reposToDisplay.map(repo => {
             const homepage = repo.homepage ? `<a href="${repo.homepage}" target="_blank">${repo.homepage}</a>` : 'No homepage available';
@@ -119,45 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show or hide the "Show More" and "Show Less" buttons
         showMoreBtn.style.display = (displayedReposCount < allRepos.length) ? 'block' : 'none';
         showLessBtn.style.display = (displayedReposCount > 4) ? 'block' : 'none';
-    }*/
-
-        function displayRepos() {
-            const reposToDisplay = allRepos.slice(0, displayedReposCount);
-            const repoList = reposToDisplay.map(repo => {
-                const homepage = repo.homepage 
-                    ? `<a href="${repo.homepage}" target="_blank">${repo.homepage}</a>` 
-                    : 'No homepage available';
-                
-                // Styled iframe to look like a laptop screen preview
-                const iframe = repo.homepage 
-                    ? `<iframe src="${repo.homepage}" ></iframe>`
-                    : '<p>No website available for preview.</p>';
-        
-                return `
-                    <div class="repo">
-                        <h3>${repo.name}</h3>
-                        <div class="laptop-frame">
-                            ${iframe}
-                        </div>
-                        <p>Visit site: ${homepage}</p>
-                        <p>Description: ${repo.description ? repo.description : 'No description provided.'}</p>
-                        <p><a href="${repo.html_url}" target="_blank">View Repository</a></p>
-                        <p>Stars: ${repo.stargazers_count}</p>
-                        <p>Forks: ${repo.forks_count}</p>
-                    </div>
-
-                `;
-            }).join('');
-        
-            repoDetails.innerHTML = repoList;
-        
-            // Show or hide the "Show More" and "Show Less" buttons
-            showMoreBtn.style.display = (displayedReposCount < allRepos.length) ? 'block' : 'none';
-            showLessBtn.style.display = (displayedReposCount > 4) ? 'block' : 'none';
-        }
-        
-        
-        
+    }
 
     showMoreBtn.addEventListener('click', function() {
         displayedReposCount += 4;
