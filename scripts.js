@@ -15,11 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more languages and their respective images here
     };
 
-    const authHeaders = {
-        headers: {
-            'Authorization': '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'
-        }
-    };
+
 
     fetch(userReposUrl, authHeaders)
     .then(response => {
