@@ -32,7 +32,6 @@ body.loaded {
 }
 
 #loader img {
-    width: 200px;
     overflow-y: hidden;
     overflow-x: hidden; 
 }
@@ -867,4 +866,8 @@ h3{
     border: none;
     transform: scale(0.22); 
     transform-origin: top left;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d78f8c5ed34623a830b4f885b77e34290364699f
