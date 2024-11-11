@@ -56,7 +56,7 @@ body.loaded nav {
 
 /* Base styles */
 nav {
-    padding: 10px 20px;
+    padding: 0px 20px;
     box-shadow: 0 4px 8px rgb(0, 0, 0); 
     display: flex;
     justify-content: space-between;
@@ -474,8 +474,36 @@ nav .github{
 }
 
 .logo {
-    width: 10%; 
-    height: auto; 
+    width: 150px; /* Adjust size as needed */
+    height: 13vh;
+}
+
+.logo-text {
+    position: absolute;
+    left: 51%;
+    transform: translateX(-50%);
+    color: #000000; 
+    font-size: 18px; 
+    font-weight: bold;
+    border-radius: 4px; 
+    font-size: large;
+    text-decoration: underline;
+    padding: 3px 13px;
+    border-radius: 10rem;
+    margin: 0%;
+    box-shadow: inset 2px 5px 8px rgb(0, 0, 0), 0px 0px 10px rgb(255, 187, 0);
+}
+
+.logo-head {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
 }
 
 .github-repo {
@@ -866,8 +894,6 @@ h3{
     border: none;
     transform: scale(0.22); 
     transform-origin: top left;
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> d78f8c5ed34623a830b4f885b77e34290364699f
+

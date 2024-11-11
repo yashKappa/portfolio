@@ -398,3 +398,4 @@ window.addEventListener('load', function() {
     // Initially add the loading class to prevent scrolling and hide content
     document.body.classList.add('loading');
 });
+
