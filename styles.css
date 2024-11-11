@@ -350,6 +350,10 @@ nav ul li:hover {
         width: 100%;
     }
 
+    #loader img{
+        width: 99.99%;
+    }
+
 
 }
 
