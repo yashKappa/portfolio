@@ -207,9 +207,40 @@ nav ul li:hover {
         display: flex;
         transform: translateX(0); 
     }
+
+    nav .logo {
+        width: 150px; /* Adjust size as needed */
+        height: 10vh;
+        margin-left: -1.5rem;
+    }
     
-    nav .logo{
-        width: 5rem;
+    nav .logo-text {
+        position: absolute;
+        left: 42.5%;
+        transform: translateX(-50%);
+        color: #000000; 
+        font-size: 18px; 
+        font-weight: bold;
+        border-radius: 4px; 
+        font-size: large;
+        text-decoration: underline;
+        padding: 3px 13px;
+        border-radius: 10rem;
+        margin: 0%;
+        box-shadow: inset 2px 5px 8px rgb(0, 0, 0), 0px 0px 10px rgb(255, 187, 0);
+    }
+    
+    nav .logo-head {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        height: 3vh;
+        padding: 0%;
+        margin: 0%;
+        box-sizing: border-box;
+
     }
     
 
