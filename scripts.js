@@ -15,6 +15,56 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more languages and their respective images here
     };
 
+const authHeaders = {
+    headers: {
+        'Authorization': 'token YOUR_PERSONAL_ACCESS_TOKEN'
+    }
+};
+
+fetch(userReposUrl, authHeaders)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Process data as before
+    })
+    .catch(error => {
+        console.error('Error fetching the repository data:', error);
+    });
+
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function fetchLanguagesWithDelay(repos) {
+        const languagesData = [];
+        for (const repo of repos) {
+            const res = await fetch(repo.languages_url);
+            if (res.ok) {
+                languagesData.push(await res.json());
+            }
+            await delay(500); // Delay of 500ms between requests
+        }
+        return languagesData;
+    }
+
+    fetch(userReposUrl, authHeaders)
+    .then(response => {
+        if (response.status === 403 && response.headers.get('X-RateLimit-Remaining') === '0') {
+            throw new Error('Rate limit exceeded. Please try again later.');
+        }
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('Error fetching the repository data:', error);
+        repoDetails.innerHTML = `<p class="error">Failed to load repository details: ${error.message}</p>`;
+    });
 
 
     fetch(userReposUrl, authHeaders)
