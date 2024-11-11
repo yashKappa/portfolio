@@ -44,6 +44,9 @@ body.loaded #loader {
     overflow-x: hidden;
 }
 
+#loader img{
+    width: 50%;
+}
 
 /* Show navigation bar after loading */
 body.loaded nav {
@@ -835,4 +838,29 @@ h3{
     color: rgb(0, 0, 0);
     padding: 10px;
     border-radius: 0.3rem;  
+}
+
+
+.laptop-frame {
+    position:relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    border: 1px solid #333; /* Frame border */
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin: 10px 0;
+    background-color: #000; /* Optional, to simulate laptop bezel */
+}
+
+/* Iframe styled to fit the frame with scale */
+.laptop-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 456%; 
+    height: 456%;
+    border: none;
+    transform: scale(0.22); 
+    transform-origin: top left;
 }
