@@ -12,14 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
         'CSS': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png',
         'JavaScript': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
         'EJS': 'https://pbs.twimg.com/profile_images/2199543684/ejs_400x400.png',
+        'Python': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python',
+        'TypeScript': 'https://cdn.worldvectorlogo.com/logos/typescript-2.svg',
         // Add more languages and their respective images here
     };
 
-const authHeaders = {
-    headers: {
-        'Authorization': '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'
-    }
-};
+    const authHeaders = {
+        headers: {
+            'Authorization': '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'
+        }
+    };
 
 fetch(userReposUrl, authHeaders)
     .then(response => {
@@ -171,6 +173,35 @@ fetch(userReposUrl, authHeaders)
         showLessBtn.style.display = (displayedReposCount > 4) ? 'block' : 'none';
     }*/
 
+        async function fetchLanguages(repo) {
+            try {
+                const response = await fetch(repo.languages_url, authHeaders);
+                if (response.ok) {
+                    const languages = await response.json();
+                    return Object.keys(languages); // Return only the language names
+                } else {
+                    console.error(`Failed to fetch languages for ${repo.name}: ${response.status}`);
+                }
+            } catch (error) {
+                console.error(`Error fetching languages for ${repo.name}:`, error);
+            }
+            return []; // Return an empty array on failure
+        }
+        
+        async function fetchReposWithLanguages() {
+            const response = await fetch(userReposUrl, authHeaders);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch repositories: ${response.status}`);
+            }
+            const repos = await response.json();
+    
+            for (const repo of repos) {
+                const languages = await fetchLanguages(repo);
+                repo.languages = languages.join(', '); // Store languages as a string in the repo object
+            }
+            return repos;
+        }
+    
         function displayRepos() {
             const reposToDisplay = allRepos.slice(0, displayedReposCount);
             const repoList = reposToDisplay.map(repo => {
@@ -178,11 +209,12 @@ fetch(userReposUrl, authHeaders)
                     ? `<a href="${repo.homepage}" target="_blank">${repo.homepage}</a>` 
                     : 'No homepage available';
                 
-                // Styled iframe to look like a laptop screen preview
                 const iframe = repo.homepage 
                     ? `<iframe src="${repo.homepage}" ></iframe>`
                     : '<p>No website available for preview.</p>';
-        
+    
+                const languages = repo.languages || 'Languages not available';
+    
                 return `
                     <div class="repo">
                         <h3>${repo.name}</h3>
@@ -194,17 +226,28 @@ fetch(userReposUrl, authHeaders)
                         <p><a href="${repo.html_url}" target="_blank">View Repository</a></p>
                         <p>Stars: ${repo.stargazers_count}</p>
                         <p>Forks: ${repo.forks_count}</p>
+                        <p>Languages: ${languages}</p>
                     </div>
-
                 `;
             }).join('');
-        
+    
             repoDetails.innerHTML = repoList;
-        
+    
             // Show or hide the "Show More" and "Show Less" buttons
             showMoreBtn.style.display = (displayedReposCount < allRepos.length) ? 'block' : 'none';
             showLessBtn.style.display = (displayedReposCount > 4) ? 'block' : 'none';
         }
+        
+        // Call this function to fetch repositories with language data and display them
+        fetchReposWithLanguages().then(repos => {
+            allRepos = repos;
+            displayRepos();
+        }).catch(error => {
+            console.error('Error fetching repositories or languages:', error);
+            repoDetails.innerHTML = `<p class="error">Failed to load repository details: ${error.message}</p>
+            <p class="error">Too Many Requests. Please try again later.</p>`;
+        });
+        
         
         
         
