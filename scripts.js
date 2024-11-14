@@ -442,3 +442,154 @@ window.addEventListener('load', function() {
     document.body.classList.add('loading');
 });
 
+const mainCursor = document.getElementById("cursor-main");
+const shadowCursor = document.getElementById("cursor-shadow");
+
+document.addEventListener("mousemove", (e) => {
+    // Only show custom cursor on desktop, hide on mobile
+    if (window.innerWidth > 768) {
+        mainCursor.style.left = `${e.clientX}px`;
+        mainCursor.style.top = `${e.clientY}px`;
+
+        // Slightly delay the shadow cursor to create a trailing effect
+        setTimeout(() => {
+            shadowCursor.style.left = `${e.clientX}px`;
+            shadowCursor.style.top = `${e.clientY}px`;
+        }, 50); // Adjust delay for shadow effect
+    }
+});
+
+// Hover effect to increase main cursor size, change color, and shrink shadow cursor
+document.querySelectorAll('button, a').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        // Increase main cursor size and change its color to red with border
+        mainCursor.style.width = '25px';
+        mainCursor.style.height = '25px';
+        mainCursor.style.border = '3px solid red'; /* Red border */
+        mainCursor.style.backgroundColor = 'rgba(255, 0, 0, 0)'; // Red color for main cursor
+        
+        // Shrink shadow cursor and change its color to yellow with background color
+        shadowCursor.style.width = '5px';
+        shadowCursor.style.height = '5px';
+        shadowCursor.style.backgroundColor = 'Yellow'; // Yellow for shadow cursor
+    });
+
+    item.addEventListener('mouseleave', () => {
+        // Reset main cursor size and color
+        mainCursor.style.width = '10px';
+        mainCursor.style.height = '10px';
+        mainCursor.style.border = 'none';
+        mainCursor.style.backgroundColor = 'rgb(255, 0, 0)'; // Reset to red
+        
+        // Reset shadow cursor size, border, and background color
+        shadowCursor.style.width = '25px';
+        shadowCursor.style.height = '25px';
+        shadowCursor.style.border = '2px solid yellow';
+        shadowCursor.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'; // Reset shadow color
+    });
+});
+
+
+window.onload = function() {
+  const container = document.querySelector('.container');
+  const svg = document.querySelector('svg');
+  const progressBar = document.querySelector('.progress-bar');
+  const pct = document.querySelector('.pct');
+  const totalLength = progressBar.getTotalLength();
+    
+  setTopValue(svg);
+  
+  progressBar.style.strokeDasharray = totalLength;
+  progressBar.style.strokeDashoffset = totalLength;
+  
+  window.addEventListener('scroll', () => {
+    setProgress(container, pct, progressBar, totalLength);
+  });
+  
+  window.addEventListener('resize', () => {
+    setTopValue(svg);
+  });
+}
+
+function setTopValue(svg) {
+  svg.style.top = document.documentElement.clientHeight * 0.5 - (svg.getBoundingClientRect().height * 0.5) + 'px';
+}
+
+
+// function setProgress(container, pct, progressBar, totalLength) {
+//   const clientHeight = document.documentElement.clientHeight;
+//   const scrollHeight = document.documentElement.scrollHeight;
+//   const scrollTop = document.documentElement.scrollTop;
+  
+//   const percentage = scrollTop / (scrollHeight - clientHeight);
+//   if(percentage === 1) {
+//     container.classList.add('completed');
+//   } else {
+//     container.classList.remove('completed');
+//   }
+//   pct.innerHTML = Math.round(percentage * 100) + '%';
+//   progressBar.style.strokeDashoffset = totalLength - totalLength * percentage;  
+// }
+
+
+window.onload = function() {
+  const progressContainer = document.querySelector('.progress-container');  // Updated selector
+  const svg = document.querySelector('svg');
+  const progressBar = document.querySelector('.progress-bar');
+  const pct = document.querySelector('.pct');
+  const totalLength = progressBar.getTotalLength();
+
+  // Set the initial top position of the SVG
+  setTopValue(svg);
+  
+  // Initialize strokeDasharray and strokeDashoffset
+  progressBar.style.strokeDasharray = totalLength;
+  progressBar.style.strokeDashoffset = totalLength;
+  
+  // Add scroll event listener
+  window.addEventListener('scroll', () => {
+    setProgress(progressContainer, pct, progressBar, totalLength);  // Updated function call
+  });
+
+  // Adjust position of the SVG on resize
+  window.addEventListener('resize', () => {
+    setTopValue(svg);
+  });
+}
+
+// Function to set the top value of the SVG container
+function setTopValue(svg) {
+  svg.style.top = document.documentElement.clientHeight * 0.5 - (svg.getBoundingClientRect().height * 0.5) + 'px';
+}
+
+// Function to set the progress based on the scroll position
+function setProgress(progressContainer, pct, progressBar, totalLength) {  // Updated parameter name
+  const clientHeight = document.documentElement.clientHeight;
+  const scrollHeight = document.documentElement.scrollHeight;
+  const scrollTop = document.documentElement.scrollTop;
+
+  // Calculate the scroll percentage
+  const percentage = scrollTop / (scrollHeight - clientHeight);
+
+  // If scroll reaches the bottom, add the 'completed' class
+  if(percentage === 1) {
+    progressContainer.classList.add('completed');
+  } else {
+    progressContainer.classList.remove('completed');
+  }
+
+  // Update the percentage text
+  pct.innerHTML = Math.round(percentage * 100) + '%';
+  
+  // Update the strokeDashoffset to animate the progress circle
+  progressBar.style.strokeDashoffset = totalLength - totalLength * percentage;  
+}
+
+
+function scrollToTop() {
+    window.scrollTo({
+      top: 0,               // Scroll to the top of the page
+      behavior: 'smooth'     // Smooth scrolling effect
+    });
+  }
+  

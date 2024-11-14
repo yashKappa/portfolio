@@ -9,7 +9,9 @@
     
 </head>
 <body>
-
+    <div id="cursor-main"></div>
+    <div id="cursor-shadow"></div>
+    
    <div id="loader">
     <div class='main-1'>
         <h4 class="first">Yash.Folio</h4>
@@ -41,6 +43,22 @@
             <a class="github" href="https://github.com/yashKappa"><li class="git">Github <img src="github.png"></li></a>
         </ul>
     </nav>
+    <!-- <div class="progress"></div> -->
+    <div class="progress-container">
+        <p class="pct">0%</p>
+        <svg class="complete" width="80" height="80" xmlns="https://www.w3.org/2000/svg" onclick="scrollToTop()">
+          <defs>
+            <linearGradient id="grad">
+              <stop offset="0%" stop-color="#fbc2eb"></stop>
+              <stop offset="30%" stop-color="#a6c1ee"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="30" cy="30" r="20"></circle>
+          <circle class="progress-bar" cx="30" cy="30" r="20"></circle>
+        </svg>
+      </div>
+      
+      
     
     <div id="home" class="content">
         <div class="main">
@@ -240,7 +258,9 @@
     </div>
 
 </div>
-    
+
+  
+  
     <script>
         document.getElementById('download-btn').addEventListener('click', function() {
             var link = document.createElement('a');

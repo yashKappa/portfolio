@@ -1,5 +1,5 @@
 body {
-    width: 100%;    
+    width: 100%;  
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI';
@@ -29,6 +29,7 @@ body.loaded {
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ensure the loader is above other elements */
+    top: -0px;
 }
 
 #loader img {
@@ -76,12 +77,13 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    cursor: none;
 }
 
 nav ul li {
+    cursor: none;
     display: inline;
     padding: 10px;
-    cursor: pointer;
     border-radius: 5px;
     position: relative;
     margin-right: 3rem;
@@ -98,6 +100,8 @@ nav ul li a {
     padding: 10px;
     border-radius: 5px;
     transition: background-color 0.3s;
+    cursor: none;
+
 }
 
 nav ul li:hover::after {
@@ -118,7 +122,7 @@ nav ul li:hover {
 .menu-toggle {
     display: none;
     flex-direction: column;
-    cursor: pointer;
+    cursor: none;
     margin-right: 3rem;
 }
 
@@ -148,7 +152,6 @@ nav ul li:hover {
         padding: 0;
         font-family: 'Segoe UI';
         background-color: rgb(46, 46, 138);
-        color: white;
         background-size: cover;
         background-position: center;
         background-size: cover;
@@ -179,7 +182,7 @@ nav ul li:hover {
         flex-direction: column;
         width: 60%;
         height: 95vh;
-        background-color: rgba(14, 14, 14, 0.699);
+        background-color: rgba(0, 0, 0, 0.699);
         position: absolute;
         top: 53px;
         right: 0;
@@ -201,8 +204,11 @@ nav ul li:hover {
     }
     
     nav ul li a {
+        color: #000000;
         display: block;
         width: 100%;
+        text-shadow: 2px 0 #fffcfc, -2px 0 #fffcfc, 0 2px #fffcfc, 0 -2px #fffcfc,
+        1px 1px #fffcfc, -1px -1px #fffcfc, 1px -1px #fffcfc, -1px 1px #fffcfc;
     }
     
     nav ul.show-menu {
@@ -250,7 +256,7 @@ nav ul li:hover {
         background-image: linear-gradient(135deg, #62bbf760 0%, #ff838360 51%, #fd72be69 100%);
         display: flex;
         padding: 10px;
-        cursor: pointer;
+        cursor: none;
         border-radius: 0px;
         color: white;
         width: 65%;
@@ -298,7 +304,11 @@ nav ul li:hover {
     }
 
     #skill-repo p{
+        font-family: monospace;
         width: fit-content;
+        text-shadow: 2px 0 #000000, -2px 0 #000000, 0 2px #000000, 0 -2px #000000,
+        1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+        
     }
 
     .edu {
@@ -385,6 +395,10 @@ nav ul li:hover {
 
     #loader img{
         width: 99.99%;
+    }
+
+    #cursor-main, #cursor-shadow {
+        display: none;
     }
 
 
@@ -488,7 +502,7 @@ nav ul.show-menu {
     display: flex;
     align-items: center; 
     padding: 10px;
-    cursor: pointer;
+    cursor: none;
     border-radius: 5px;
     position: relative;
     margin-right: 3rem;
@@ -664,7 +678,7 @@ nav .github{
     border: none;
     width: fit-content;
     border-radius: 0.2rem;
-    cursor: pointer;
+    cursor: none;
     margin: 10px;
 }
 
@@ -679,7 +693,7 @@ nav .github{
     border: none;
     width: fit-content;
     border-radius: 0.2rem;
-    cursor: pointer;
+    cursor: none;
     margin: 10px;
 }
 
@@ -872,7 +886,7 @@ h3{
 
 #about-repo button:hover{
     background-color: rgb(12, 16, 121);
-    cursor: pointer;
+    cursor: none;
 }
 
 #about-repo i{
@@ -936,7 +950,8 @@ h3{
     background-color: #000; /* Optional, to simulate laptop bezel */
 }
 
-/* Iframe styled to fit the frame with scale */
+/******************* Start Iframe styled to fit the frame with scale ***********************/
+
 .laptop-frame iframe {
     position: absolute;
     top: 0;
@@ -1005,3 +1020,264 @@ h3{
           );
       } 
   }
+
+  /* Responsive styling for tablets */
+@media (max-width: 768px) {
+    .laptop-frame iframe {
+    transform: scale(0.4); /* Scale up for tablets */
+    }
+
+    h4 {
+        font-size: 60px; /* Reduce text size */
+        transform: translate(20%, -150%); /* Adjust positioning */
+    }
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 480px) {
+    .laptop-frame iframe {
+    transform: scale(0.3); /* Scale up further for mobile */
+    }
+
+    h4 {
+        font-size: 40px; /* Smaller font for mobile */
+        transform: translate(80%, -250%); /* Adjust positioning */
+    }
+
+    .first {
+        -webkit-text-stroke: 1px #05b0f3; /* Thinner outline on mobile */
+    }
+
+    .second {
+        -webkit-text-stroke: 1px #ffffff; /* Thinner outline on mobile */
+    }
+}
+
+/******************* End Iframe styled to fit the frame with scale ***********************/
+
+
+
+/****************** Main cursor circle ***********************/
+#cursor-main {
+    width: 10px; /* Initial size */
+    height: 10px;
+    position: sticky;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 0); /* Red color */
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: width 1s, height 1s, border 1s; /* Smooth transition */
+}
+
+/* Shadow cursor (trailing circle) */
+#cursor-shadow {
+    width: 25px; /* Initial size */
+    height: 25px;
+    position: sticky;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent shadow */
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    border: 2px solid yellow;
+    /* box-shadow: inset 0px 4px 8px rgb(83, 10, 255); */
+    transition: width 1s, height 1s, border 1s, background-color 1s; /* Smooth transition */
+}
+
+/* Hide the default cursor */
+body {
+    cursor: none;
+}
+
+/* Hover effect for buttons and links */
+button, a {
+    transition: all 0.3s ease-in-out;
+}
+
+/* On hover, expand main cursor and shrink shadow cursor */
+button:hover, a:hover {
+    cursor: none; /* Disable the default cursor */
+}
+
+button:hover #cursor-main, a:hover #cursor-main {
+    width: 30px; /* Enlarged size */
+    height: 30px;
+    border: 2px solid rgba(255, 0, 0, 0); /* Red border */
+
+}
+
+button:hover #cursor-shadow, a:hover #cursor-shadow {
+    width: 5px; /* Shrink shadow */
+    height: 5px;
+    border: 2px solid yellow; /* Yellow border for shadow */
+    background-color: rgba(255, 255, 0, 0.5); /* Make it slightly yellow */
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+   
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    background-image: url("https://i.pinimg.com/originals/62/39/4d/62394d753859943e6a1a36443ef78795.gif");
+    background-repeat: no-repeat; /* Repeats image vertically */
+    background-size: 100%;
+    background-size: cover;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-image: url("https://media1.giphy.com/media/NZUZ80nOX7FqrXiRIO/giphy.gif?cid=6c09b9527cks5iva1ryba91ayze4gnaj1w0hrmyejddcr746&ep=v1_gifs_search&rid=giphy.gif&ct=g");
+    background-repeat: no-repeat;
+    width: 15px auto;
+    background-size: cover;
+    background-position: center;
+}
+
+/*********************** END MAIN CURSOR ************************/
+
+/* .progress {
+    height: 1rem;
+    background: blue;
+    position: fixed;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    transform-origin: 0 50%;
+    animation:
+      scaleProgress auto linear forwards,
+      colorChange auto linear forwards;
+    animation-timeline: scroll(root);
+    z-index: 9999;
+  }
+  
+  @keyframes scaleProgress {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  
+  @keyframes colorChange {
+    0% {
+      background-color: rgba(255, 0, 0, 0.623);
+    }
+    50% {
+      background-color: rgba(255, 255, 0, 0.658);
+    }
+    100% {
+      background-color: rgba(0, 255, 0, 0.658);
+    }
+  }
+   */
+
+
+/*********************** START PROGRESS CIRCLE ********************/
+.progress-container {
+  display: flex;
+  flex-direction: column; /* Stack the elements vertically */
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+  bottom: 5px;  /* Adjust distance from the bottom */
+  right: 5px;   /* Adjust distance from the right */
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.progress-container:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 30px;   /* Adjust size of the circle */
+  height: 30px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.progress-container.completed:before {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+svg {
+  width: 60px;  /* Adjust the size of the progress circle */
+  height: 60px;
+  transform: rotate(-90deg);
+  transition: transform 0.5s ease;
+}
+
+svg circle {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  fill: transparent;
+}
+
+svg .progress-bar {
+  stroke: url(#grad);
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.pct {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+}
+@media (max-width: 768px) {
+    .progress-container {
+      bottom: 20px; /* Positioning slightly closer to the bottom */
+      right: 20px;  /* Positioning slightly closer to the right */
+      padding: 80px; /* Slightly reduced padding */
+    }
+  
+    svg {
+      width: 60px;   /* Adjust size of the SVG for tablets */
+      height: 60px;
+    }
+  
+    .pct {
+      font-size: 10px; /* Slightly smaller text for tablets */
+    }
+  }
+  
+  /* Responsively adjust the size and position for mobile devices */
+  @media (max-width: 480px) {
+    .progress-container {
+      bottom: 0%;  /* Keep it at the bottom */
+      right: -1%;   /* Keep it at the right */
+      padding: 5px;  /* Reduced padding for mobile */
+    }
+  
+    svg {
+      width: 60px;   /* Smaller circle for mobile */
+      height: 60px;
+    }
+  
+    .pct {
+      font-size: 12px; /* Adjust font size for mobile */
+    }
+  }
+
+/*********************** END PROGRESS CIRCLE ********************/
