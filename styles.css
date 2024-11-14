@@ -976,6 +976,8 @@ h3{
     transform: translate(25%, -190%);
     margin: 0;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
   }
   
   .first {
@@ -1023,25 +1025,16 @@ h3{
 
   /* Responsive styling for tablets */
 @media (max-width: 768px) {
-    .laptop-frame iframe {
-    transform: scale(0.4); /* Scale up for tablets */
-    }
-
     h4 {
         font-size: 60px; /* Reduce text size */
-        transform: translate(20%, -150%); /* Adjust positioning */
     }
 }
 
 /* Responsive styling for mobile devices */
 @media (max-width: 480px) {
-    .laptop-frame iframe {
-    transform: scale(0.3); /* Scale up further for mobile */
-    }
-
     h4 {
         font-size: 40px; /* Smaller font for mobile */
-        transform: translate(80%, -250%); /* Adjust positioning */
+        transform: translate(80%, -250%); 
     }
 
     .first {
