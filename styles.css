@@ -446,6 +446,14 @@ nav ul.show-menu {
     margin: 5px 0;
 }
 
+/* .text .self{
+    margin-top: -5rem;
+    margin-bottom: -0.1rem;
+    width: 150px;
+    height: 150px;
+    border-radius: 10rem;
+} */
+
 .image {
     text-align: right;
 }
