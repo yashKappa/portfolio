@@ -14,7 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'EJS': 'https://pbs.twimg.com/profile_images/2199543684/ejs_400x400.png',
         'Python': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python',
         'TypeScript': 'https://cdn.worldvectorlogo.com/logos/typescript-2.svg',
-        // Add more languages and their respective images here
+        'C++': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png',
+        'Dart': 'https://cdn.iconscout.com/icon/free/png-256/free-flutter-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-3-pack-logos-icons-2944876.png?f=webp&w=256',
+        'CMake': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/CMake-logo-triangle-high-res.png/1200px-CMake-logo-triangle-high-res.png',
+        'C': 'https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png',
     };
 
     const authHeaders = {

@@ -686,7 +686,7 @@ nav .github{
     border: none;
     width: fit-content;
     border-radius: 0.2rem;
-    cursor: none;
+    cursor: pointer;
     margin: 10px;
 }
 
@@ -701,7 +701,7 @@ nav .github{
     border: none;
     width: fit-content;
     border-radius: 0.2rem;
-    cursor: none;
+    cursor: pointer;
     margin: 10px;
 }
 
@@ -1058,62 +1058,57 @@ h3{
 
 
 
-/****************** Main cursor circle ***********************/
+/****************** Main cursor circle **********************
 #cursor-main {
-    width: 10px; /* Initial size */
+    width: 10px; 
     height: 10px;
     position: sticky;
     border-radius: 50%;
-    background-color: rgb(255, 0, 0); /* Red color */
+    background-color: rgb(255, 0, 0); 
     pointer-events: none;
     z-index: 10000;
     transform: translate(-50%, -50%);
-    transition: width 1s, height 1s, border 1s; /* Smooth transition */
+    transition: width 1s, height 1s, border 1s; 
 }
 
-/* Shadow cursor (trailing circle) */
 #cursor-shadow {
-    width: 25px; /* Initial size */
+    width: 25px; 
     height: 25px;
     position: sticky;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent shadow */
+    background-color: rgba(255, 255, 255, 0.15); 
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
     border: 2px solid yellow;
-    /* box-shadow: inset 0px 4px 8px rgb(83, 10, 255); */
-    transition: width 1s, height 1s, border 1s, background-color 1s; /* Smooth transition */
+    transition: width 1s, height 1s, border 1s, background-color 1s; 
 }
 
-/* Hide the default cursor */
-body {
+/* body {
     cursor: none;
 }
 
-/* Hover effect for buttons and links */
 button, a {
     transition: all 0.3s ease-in-out;
 }
 
-/* On hover, expand main cursor and shrink shadow cursor */
 button:hover, a:hover {
-    cursor: none; /* Disable the default cursor */
+    cursor: none; 
 }
 
 button:hover #cursor-main, a:hover #cursor-main {
-    width: 30px; /* Enlarged size */
+    width: 30px; 
     height: 30px;
-    border: 2px solid rgba(255, 0, 0, 0); /* Red border */
+    border: 2px solid rgba(255, 0, 0, 0);
 
 }
 
 button:hover #cursor-shadow, a:hover #cursor-shadow {
-    width: 5px; /* Shrink shadow */
+    width: 5px; 
     height: 5px;
-    border: 2px solid yellow; /* Yellow border for shadow */
-    background-color: rgba(255, 255, 0, 0.5); /* Make it slightly yellow */
-}
+    border: 2px solid yellow;
+    background-color: rgba(255, 255, 0, 0.5);
+} 
 
 
 /* width */
