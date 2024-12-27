@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
         'Dart': 'https://cdn.iconscout.com/icon/free/png-256/free-flutter-logo-icon-download-in-svg-png-gif-file-formats--technology-social-media-vol-3-pack-logos-icons-2944876.png?f=webp&w=256',
         'CMake': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/CMake-logo-triangle-high-res.png/1200px-CMake-logo-triangle-high-res.png',
         'C': 'https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png',
+        'Swift': 'https://developer.apple.com/swift/images/swift-og.png',
+        'Kotlin': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin_Icon.png/1200px-Kotlin_Icon.png',
+        'Objective-C': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6uNin_p1OOe9DFjHY-jcd7SoMhWc-qv_-Yw&s',
     };
 
     const authHeaders = {
